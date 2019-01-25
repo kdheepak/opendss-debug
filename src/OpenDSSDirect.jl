@@ -4,7 +4,13 @@ export LIBRARY
 import Libdl
 
 const path = @__DIR__
-const LIBRARY = joinpath(path, "../deps/apple/libdss_capi_v7.dylib")
+if iswindows()
+    const LIBRARY = joinpath(path, "../deps/win32/libdss_capi_v7.dll")
+elseif islinux()
+    const LIBRARY = joinpath(path, "../deps/linux/libdss_capi_v7.so")
+else
+    const LIBRARY = joinpath(path, "../deps/apple/libdss_capi_v7.dylib")
+end
 # _dss_lib = Libdl.dlopen(LIBRARY)
 
 include("dss.jl")
