@@ -1,8 +1,14 @@
 # -*- coding: utf-8 -*-
 
 import ctypes
+import platform
 
-d = ctypes.CDLL("./deps/apple/libdss_capi_v7.dylib")
+if platform.system() == "Windows":
+    d = ctypes.CDLL("./deps/win64/libdss_capi_v7.dll")
+elif platform.system() == "Linux":
+    d = ctypes.CDLL("./deps/linux/libdss_capi_v7.so")
+else:
+    d = ctypes.CDLL("./deps/apple/libdss_capi_v7.dylib")
 
 d.DSS_Start(0)
 d.Text_Set_Command(b"Redirect ./examples/8500-Node/Run_8500Node.dss")
