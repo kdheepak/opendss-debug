@@ -4,9 +4,9 @@ export LIBRARY
 import Libdl
 
 const path = @__DIR__
-if iswindows()
+if Sys.iswindows()
     const LIBRARY = joinpath(path, "../deps/win32/libdss_capi_v7.dll")
-elseif islinux()
+elseif Sys.islinux()
     const LIBRARY = joinpath(path, "../deps/linux/libdss_capi_v7.so")
 else
     const LIBRARY = joinpath(path, "../deps/apple/libdss_capi_v7.dylib")
