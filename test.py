@@ -4,7 +4,8 @@ import ctypes
 import platform
 
 if platform.system() == "Windows":
-    d = ctypes.CDLL("./deps/win64/libdss_capi_v7.dll")
+    d = ctypes.CDLL("./deps/win64/libklusolve.dll")
+    d = ctypes.CDLL("./deps/win64/dss_capi_v7.dll")
 elif platform.system() == "Linux":
     d = ctypes.CDLL("./deps/linux/libdss_capi_v7.so")
 else:

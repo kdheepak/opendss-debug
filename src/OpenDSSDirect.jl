@@ -5,7 +5,8 @@ import Libdl
 
 const path = @__DIR__
 if Sys.iswindows()
-    const LIBRARY = joinpath(path, "../deps/win32/libdss_capi_v7.dll")
+    Libdl.dlopen(joinpath(path, "../deps/win64/libklusolve.dll") |> normpath)
+    const LIBRARY = joinpath(path, "../deps/win64/dss_capi_v7.dll") |> normpath
 elseif Sys.islinux()
     const LIBRARY = joinpath(path, "../deps/linux/libdss_capi_v7.so")
 else
